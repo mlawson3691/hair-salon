@@ -13,6 +13,11 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Stylist::deleteAll();
+        }
+
         function test_save()
         {
             //Arrange
