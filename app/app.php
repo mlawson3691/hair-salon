@@ -37,5 +37,10 @@
         return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist));
     });
 
+    $app->get("/stylist/{id}/edit", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylist_edit.html.twig', array ('stylist' => $stylist));
+    });
+
     return $app;
 ?>
