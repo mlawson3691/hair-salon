@@ -11,7 +11,7 @@
                         <div class='well profile'>
                             <h3>{{ client.getName }}</h3>
                             <a href='/client/{{ client.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
-                            <form action='/client/{{ client.getId }}' method='post'>
+                            <form action='/stylist/{{ stylist.getId }}/{{ client.getId }}' method='post'>
                                 <input name='_method' type='hidden' value='delete'>
                                 <button type='submit' class='btn btn-danger'>Delete</button>
                             </form>
