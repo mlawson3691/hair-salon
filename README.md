@@ -28,6 +28,9 @@ This application is an exercise in PHP BDD testing. It serves as a tool for a ha
 * USE hair_salon;
 * CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255));
 * (copy database in phpmyadmin to create hair_salon_test)
+* CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), stylist_id INT);
+* DROP DATABASE hair_salon_test;
+* (copy database in phpmyadmin to create hair_salon_test)
 
 ## Specifications
 
@@ -53,6 +56,38 @@ This application is an exercise in PHP BDD testing. It serves as a tool for a ha
 
 * The program will delete specific stylists
     * Example input: Susan
+    * Example output: false
+
+* The program will save new clients
+    * Example input: Bob
+    * Example output: client 1
+
+* The program will return all clients
+    * Example input: Bob, Bill
+    * Example output: client 1, client 2
+
+* The program will delete all clients
+    * Example input: Bob, Bill
+    * Example output: false
+
+* The program will return a specific client by id
+    * Example input: 1
+    * Example output: Bob
+
+* The program will edit clients
+    * Example input: Bob
+    * Example output: Robert
+
+* The program will delete specific clients
+    * Example input: Bob
+    * Example output: false
+
+* The program will return all clients of a specific stylist
+    * Example input: Jill
+    * Example output: client 1, client 2
+
+* While deleting a stylist, the program will also delete of that their clients
+    * Example input: Susan & Bob
     * Example output: false
 
 ## Known Bugs ##
