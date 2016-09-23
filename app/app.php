@@ -40,7 +40,15 @@
     $app->patch("/stylist/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
         $stylist->update($_POST['name']);
-        return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist));
+        $stylists = Stylist::getAll();
+        return $app['twig']->render('index.html.twig', array ('stylists' => $stylists));
+    });
+
+    $app->delete("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $stylist->delete();
+        $stylists = Stylist::getAll();
+        return $app['twig']->render('index.html.twig', array ('stylists' => $stylists));
     });
 
     $app->get("/stylist/{id}/edit", function($id) use ($app) {
