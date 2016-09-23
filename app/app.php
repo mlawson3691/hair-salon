@@ -61,10 +61,10 @@
         return $app['twig']->render('index.html.twig', array ('stylists' => $stylists));
     });
 
-    $app->delete("/stylist/{id_stylist}/{id_client}", function($id_stylist, $id_client) use ($app) {
-        $client = Client::find($id_client);
+    $app->delete("/client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $stylist = Stylist::find($client->getStylistId());
         $client->delete();
-        $stylist = Stylist::find($id_stylist);
         $clients = $stylist->findClients();
         return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist, 'clients' => $clients));
     });
