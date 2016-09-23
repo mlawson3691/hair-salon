@@ -68,7 +68,23 @@
             return $found_stylist;
         }
 
-        function update($new_name) {
+        function findClients()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+            $clients = array();
+            foreach($returned_clients as $client)
+            {
+                $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client($name, $stylist_id, $id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
+
+        function update($new_name)
+        {
             $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
         }
