@@ -27,9 +27,7 @@ This application is an exercise in PHP BDD testing. It serves as a tool for a ha
 * CREATE DATABASE hair_salon;
 * USE hair_salon;
 * CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255));
-* (copy database in phpmyadmin to create hair_salon_test)
 * CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), stylist_id INT);
-* DROP DATABASE hair_salon_test;
 * (copy database in phpmyadmin to create hair_salon_test)
 
 ## Specifications
