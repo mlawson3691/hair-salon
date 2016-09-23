@@ -22,7 +22,7 @@
         function test_save()
         {
             //Arrange
-            $name = "Jill";
+            $name = "Bob";
             $stylist_id = 1;
             $test_client = new Client($name, $stylist_id);
 
@@ -32,6 +32,26 @@
 
             //Assert
             $this->assertEquals([$test_client], $output);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $name1 = "Bob";
+            $stylist_id1 = 1;
+            $test_client1 = new Client($name1, $stylist_id1);
+            $test_client1->save();
+
+            $name2 = "Bill";
+            $stylist_id2 = 2;
+            $test_client2 = new Client($name2, $stylist_id2);
+            $test_client2->save();
+
+            //Act
+            $output = Client::getAll();
+
+            //Assert
+            $this->assertEquals([$test_client1, $test_client2], $output);
         }
     }
 ?>
