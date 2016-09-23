@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class='container'>
+        <h1>Edit {{ stylist.getName }}</h1>
+        <form class='well' action='/stylist/{{ stylist.getId }}' method='post'>
+            <input name="_method" type="hidden" value="patch">
+            <div class='form-group'>
+                <label for='name'>Name:</label>
+                <input id='name' name='name' type='text' class='form-control' value='{{ stylist.getName }}'>
+            </div>
+            <button type='submit' class='btn btn-info'>Edit</button>
+        </form>
+    </div>
+</body>
+</html>
