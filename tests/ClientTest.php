@@ -74,5 +74,25 @@
             //Assert
             $this->assertEquals([], $output);
         }
+
+        function test_find()
+        {
+            //Arrange
+            $name1 = "Bob";
+            $stylist_id1 = 1;
+            $test_client1 = new Client($name1, $stylist_id1);
+            $test_client1->save();
+
+            $name2 = "Bill";
+            $stylist_id2 = 2;
+            $test_client2 = new Client($name2, $stylist_id2);
+            $test_client2->save();
+
+            //Act
+            $output = Client::find($test_client1->getId());
+
+            //Assert
+            $this->assertEquals($test_client1, $output);
+        }
     }
 ?>
