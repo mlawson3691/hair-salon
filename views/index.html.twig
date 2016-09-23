@@ -2,7 +2,7 @@
 <html>
 <body>
     <div class='container'>
-        <h1>Hair Salon</h1>
+        <h1>Stellar Salon</h1>
         <div class='row'>
             <div class='col-md-8'>
                 <h2>All Stylists</h2>
@@ -11,10 +11,10 @@
                     {% for stylist in stylists %}
                         <div class='well profile'>
                             <a href='/stylist/{{ stylist.getId }}'><h3>{{ stylist.getName }}</h3></a>
-                            <a href='/stylist/{{ stylist.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
+                            <a href='/stylist/{{ stylist.getId }}/edit'><button class='btn btn-default'>Edit</button></a>
                             <form action='/stylist/{{ stylist.getId }}' method='post'>
                                 <input name='_method' type='hidden' value='delete'>
-                                <button type='submit' class='btn btn-danger'>Delete</button>
+                                <button type='submit' class='btn btn-default'>Delete</button>
                             </form>
                         </div>
                     {% endfor %}
@@ -28,10 +28,9 @@
                 <h2>Add a New Stylist</h2>
                 <form class='well' action='/' method='post'>
                     <div class='form-group'>
-                        <label for='name'>Name:</label>
-                        <input id='name' name='name' type='text' class='form-control'>
+                        <input name='name' type='text' class='form-control' placeholder='Name'>
                     </div>
-                    <button type='submit' class='btn btn-info'>Add</button>
+                    <button type='submit' class='btn btn-default'>Add</button>
                 </form>
             </div>
         </div>
