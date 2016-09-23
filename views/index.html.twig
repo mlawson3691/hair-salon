@@ -5,20 +5,27 @@
         <h1>Hair Salon</h1>
         <div class='row'>
             <div class='col-md-8'>
-                <h3>All Stylists</h3>
-                {% for stylist in stylists %}
+                <h2>All Stylists</h2>
+                {% if stylists is not empty %}
+                <p>Select a stylist to view their clients</p>
+                    {% for stylist in stylists %}
+                        <div class='well profile'>
+                            <a href='/stylist/{{ stylist.getId }}'><h3>{{ stylist.getName }}</h3></a>
+                            <a href='/stylist/{{ stylist.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
+                            <form action='/stylist/{{ stylist.getId }}' method='post'>
+                                <input name='_method' type='hidden' value='delete'>
+                                <button type='submit' class='btn btn-danger'>Delete</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% else %}
                     <div class='well'>
-                        <a href='/stylist/{{ stylist.getId }}'><h4>{{ stylist.getName }}</h4></a>
-                        <a href='/stylist/{{ stylist.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
-                        <form action='/stylist/{{ stylist.getId }}' method='post'>
-                            <input name='_method' type='hidden' value='delete'>
-                            <button type='submit' class='btn btn-danger'>Delete</button>
-                        </form>
+                        <h4>Add a new stylist with the form on the right</h4>
                     </div>
-                {% endfor %}
+                {% endif %}
             </div>
             <div class='col-md-4'>
-                <h3>Add a New Stylist</h3>
+                <h2>Add a New Stylist</h2>
                 <form class='well' action='/' method='post'>
                     <div class='form-group'>
                         <label for='name'>Name:</label>
