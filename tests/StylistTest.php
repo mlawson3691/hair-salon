@@ -103,6 +103,25 @@
             //Assert
             $this->assertEquals($new_name, $output);
         }
+
+        function test_delete()
+        {
+            //Arrange
+            $name1 = "Jill";
+            $test_stylist1 = new Stylist($name1);
+            $test_stylist1->save();
+
+            $name2 = "Susan";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
+
+            //Act
+            $test_stylist1->delete();
+            $output = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([$test_stylist2], $output);
+        }
     }
 
 ?>
