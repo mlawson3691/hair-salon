@@ -10,7 +10,7 @@
                     <div class='well'>
                         <a href='/stylist/{{ stylist.getId }}'><h4>{{ stylist.getName }}</h4></a>
                         <a href='/stylist/{{ stylist.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
-                        <form action='/' method='post'>
+                        <form action='/stylist/{{ stylist.getId }}' method='post'>
                             <input name='_method' type='hidden' value='delete'>
                             <button type='submit' class='btn btn-danger'>Delete</button>
                         </form>
