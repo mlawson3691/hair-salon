@@ -3,7 +3,38 @@
 <body>
     <div class='container'>
         <h1>{{ stylist.getName }}</h1>
+        <div class='row'>
+            <div class='col-md-8'>
+                <h2>Clients</h2>
+                {% if clients is not empty %}
+                    {% for client in clients %}
+                        <div class='well profile'>
+                            <h3>{{ client.getName }}</h3>
+                            <a href='/client/{{ client.getId }}/edit'><button class='btn btn-warning'>Edit</button></a>
+                            <form action='/client/{{ client.getId }}' method='post'>
+                                <input name='_method' type='hidden' value='delete'>
+                                <button type='submit' class='btn btn-danger'>Delete</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class='well'>
+                        <h4>Add a new client with the form on the right</h4>
+                    </div>
+                {% endif %}
+            </div>
+            <div class='col-md-4'>
+                <h2>Assign a New Client</h2>
+                <form class='well' action='/stylist/{{ stylist.getId }}' method='post'>
+                    <div class='form-group'>
+                        <label for='name'>Name:</label>
+                        <input id='name' name='name' type='text' class='form-control'>
+                    </div>
+                    <button type='submit' class='btn btn-info'>Add</button>
+                </form>
+                <a class='pull-right' href='/'><button class='btn btn-info'>Home</button></a>
+            </div>
+        </div>
     </div>
-    <a href='/'><button class='btn btn-info'>Home</button></a>
 </body>
 </html>
