@@ -1,6 +1,7 @@
 <?php
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
+    require_once __DIR__."/../src/Client.php";
     require_once __DIR__."/../src/Stylist.php";
 
     use Symfony\Component\Debug\Debug;
@@ -34,7 +35,16 @@
 
     $app->get("/stylist/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
-        return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist));
+        $clients = $stylist->findClients();
+        return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist, 'clients' => $clients));
+    });
+
+    $app->post("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $new_client = new Client($_POST['name'], $stylist->getId());
+        $new_client->save();
+        $clients = $stylist->findClients();
+        return $app['twig']->render('stylist.html.twig', array ('stylist' => $stylist, 'clients' => $clients));
     });
 
     $app->patch("/stylist/{id}", function($id) use ($app) {
