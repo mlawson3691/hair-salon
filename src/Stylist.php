@@ -29,5 +29,21 @@
         {
             $this->id = $new_id;
         }
+
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        static function getAll()
+        {
+
+        }
+
+        static function deleteAll()
+        {
+
+        }
     }
 ?>
